@@ -90,11 +90,13 @@
     })
 
     document.addEventListener('touchstart', function() {
+      e.preventDefault();
       var music = document.getElementById('music')
       if (music.paused) {
         music.play()
       }
     })
+
        
 }
   function IsPhone() {
