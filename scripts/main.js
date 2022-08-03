@@ -82,20 +82,23 @@
     //     music.play(); //没有就播放 
     //   }
     
-    document.addEventListener('click', function() {
+    document.addEventListener('click', function(e) {
+      //e.preventDefault()
       var music = document.getElementById('music')
+      console.log('click')
       if (music.paused) {
         music.play()
       }
-    })
+    },false)
 
-    document.addEventListener('touchstart', function() {
-      e.preventDefault();
+    document.addEventListener('touchstart', function(e) {
+      e.preventDefault()
       var music = document.getElementById('music')
+      console.log('touch')
       if (music.paused) {
         music.play()
       }
-    })
+    },{ passive: false })
 
        
 }
@@ -187,6 +190,7 @@
 
   function event () {
     document.addEventListener('click', function (e) {
+      e.preventDefault()
       textIndex++
       if (textIndex >= texts.length) {
         textIndex--
@@ -197,6 +201,7 @@
     }, false)
 
     document.addEventListener('touchstart', function (e) {
+      e.preventDefault()
       textIndex++
       if (textIndex >= texts.length) {
         textIndex--
