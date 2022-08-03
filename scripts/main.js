@@ -29,7 +29,7 @@
     
 
   let texts = ['我一直在想，', '我该如何表达','自己的爱意。','让我重拾少有的','浪漫感和仪式感',
-  '我们已经在一起:', dayDiff + ' days', hours + ' hours', minutes + ' mins', seconds + ' s', mill_seconds + ' ms','刚在一起就要异地', '是什么人间疾苦', '1th 情人节快乐', 'I HEAR LOVE', 'I BELIEVE IN LOVE',   'I MISS U ❤__wsh']
+  '我们已经在一起:', dayDiff + ' days', hours + ' hours', minutes + ' mins', seconds + ' s', mill_seconds + ' ms','刚在一起就异地', '是什么人间疾苦', '1th 情人节快乐', 'I HEAR LOVE', 'I BELIEVE IN LOVE',   'I MISS U ❤__wsh']
 
   let canvas,
     ctx,
@@ -37,7 +37,7 @@
     quiver = true,
     text = texts[0],
     textIndex = 0,
-    textSize = 80
+    textSize = 78
 
   function draw () {
     if (IsPhone()) {
