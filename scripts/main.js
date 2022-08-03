@@ -5,11 +5,31 @@
   const FRAME_RATE = 60
   const PARTICLE_NUM = 2000
   const RADIUS = Math.PI * 2
-  const CANVASWIDTH = 500
+  const CANVASWIDTH = 900
   const CANVASHEIGHT = 150
   const CANVASID = 'canvas'
+  var dateBegin = new Date('2022-06-12 19:02:00');
+  var dateEnd = new Date();
 
-  let texts = ['MY DEAR', 'LOOK UP AT THE', 'STARRY SKY', 'ARE YOU', 'LOOKING AT THE', 'SAME STAR', 'WITH ME ?', 'HAPPY', 'CHINESE', 'VALENTINE\'S', 'DAY', 'I MISS YOU']
+  var dateDiff = dateEnd.getTime() - dateBegin.getTime();//时间差的毫秒数
+    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
+    var leave1=dateDiff%(24*3600*1000)    //计算天数后剩余的毫秒数
+    var hours=Math.floor(leave1/(3600*1000))//计算出小时数
+    //计算相差分钟数
+    var leave2=leave1%(3600*1000)    //计算小时数后剩余的毫秒数
+    var minutes=Math.floor(leave2/(60*1000))//计算相差分钟数
+    
+
+    //计算相差秒数
+    var leave3=leave2%(60*1000)      //计算分钟数后剩余的毫秒数
+    var seconds=Math.round(leave3/1000)
+
+    // 计算毫秒秒数
+    var mill_seconds = leave3 % 1000;
+    
+
+  let texts = ['我一直在想，', '我该如何表达','自己的爱意。','让我重拾少有的','浪漫感和仪式感',
+  '我们已经在一起:', dayDiff + ' days', hours + ' hours', minutes + ' mins', seconds + ' s', mill_seconds + ' ms','刚在一起就要异地', '是什么人间疾苦', '1th 情人节快乐', 'I HEAR LOVE', 'I BELIEVE IN LOVE',   'I MISS U ❤__wsh']
 
   let canvas,
     ctx,
@@ -17,14 +37,18 @@
     quiver = true,
     text = texts[0],
     textIndex = 0,
-    textSize = 70
+    textSize = 80
 
   function draw () {
     ctx.clearRect(0, 0, CANVASWIDTH, CANVASHEIGHT)
     ctx.fillStyle = 'rgb(255, 255, 255)'
     ctx.textBaseline = 'middle'
     ctx.fontWeight = 'bold'
-    ctx.font = textSize + 'px \'SimHei\', \'Avenir\', \'Helvetica Neue\', \'Arial\', \'sans-serif\''
+    
+    //ctx.font = textSize + 'px \'SimHei\', \'Avenir\', \'Helvetica Neue\', \'Arial\', \'sans-serif\''
+    //ctx.font = textSize + 'px \'Times New Roman\', \'Avenir\', \'Helvetica Neue\', \'Arial\', \'sans-serif\''
+    ctx.font = textSize + 'px \'微软雅黑\', \'Avenir\', \'Helvetica Neue\', \'Arial\', \'sans-serif\''
+
     ctx.fillText(text, (CANVASWIDTH - ctx.measureText(text).width) * 0.5, CANVASHEIGHT * 0.5)
 
     let imgData = ctx.getImageData(0, 0, CANVASWIDTH, CANVASHEIGHT)
@@ -36,9 +60,30 @@
       p.inText = false
     }
     particleText(imgData)
+    toggleSound()
 
     window.requestAnimationFrame(draw)
   }
+
+  function toggleSound() {
+    // var music = document.getElementById("vd");//获取ID  
+    //     console.log(music);
+    //     console.log(music.paused);
+    // if (music.paused) { //判读是否播放  
+    //     music.paused=false;
+    //     music.play(); //没有就播放 
+    //   }
+    
+    document.addEventListener('click', function() {
+      var music = document.getElementById('music')
+      if (music.paused) {
+        music.play()
+      }
+    })
+       
+}
+
+//setInterval("toggleSound()",1000);
 
   function particleText (imgData) {
     // 点坐标获取
@@ -156,7 +201,7 @@
   class Particle {
     constructor (canvas) {
       let spread = canvas.height
-      let size = Math.random() * 1.2
+      let size = Math.random() * 1.2 + 0.1
       // 速度
       this.delta = 0.06
       // 现在的位置

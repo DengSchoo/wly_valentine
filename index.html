@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Valentine</title>
-
+    <link rel="shortcut icon" href="images/wly_qq_img.jpg">
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
@@ -16,9 +16,18 @@
       <div class="content">
         <canvas id="universe"></canvas>
         <canvas id="canvas"></canvas>
-        <iframe src="audio/[No Copyright Music] Unconditionally - Broken Elegance.mp3" allow="autoplay" style="display:none" id="iframeAudio"></iframe>
+        <!-- <iframe src="audio/[No Copyright Music] Unconditionally - Broken Elegance.mp3" allow="autoplay" style="display:none" id="iframeAudio"></iframe>
         <audio autoplay loop>
         	<source src="audio/[No Copyright Music] Unconditionally - Broken Elegance.mp3" type="audio/mpeg">
+        </audio> -->
+        <audio 
+        autoplay="autoplay" 
+        loop="loop" 
+        controls="controls"
+        preload="auto"
+        id="music"
+        src="audio/music1.mp3">
+        <!-- <source src="audio/music.mp3" type="audio/mp3" /> -->
         </audio>
         <div id="footer" class="">
           <svg id="scene" x="0%" y="0%" width="300%" height="100%">
