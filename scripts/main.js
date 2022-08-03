@@ -5,7 +5,7 @@
   const FRAME_RATE = 60
   const PARTICLE_NUM = 2000
   const RADIUS = Math.PI * 2
-  const CANVASWIDTH = 900
+  var CANVASWIDTH = 900
   const CANVASHEIGHT = 150
   const CANVASID = 'canvas'
   var dateBegin = new Date('2022-06-12 19:02:00');
@@ -40,14 +40,22 @@
     textSize = 80
 
   function draw () {
+    if (IsPhone()) {
+      //console.log('aaaa');
+      CANVASWIDTH = window.screen.availWidth
+      textSize = 48
+    }
     ctx.clearRect(0, 0, CANVASWIDTH, CANVASHEIGHT)
     ctx.fillStyle = 'rgb(255, 255, 255)'
     ctx.textBaseline = 'middle'
     ctx.fontWeight = 'bold'
     
+
     //ctx.font = textSize + 'px \'SimHei\', \'Avenir\', \'Helvetica Neue\', \'Arial\', \'sans-serif\''
     //ctx.font = textSize + 'px \'Times New Roman\', \'Avenir\', \'Helvetica Neue\', \'Arial\', \'sans-serif\''
     ctx.font = textSize + 'px \'微软雅黑\', \'Avenir\', \'Helvetica Neue\', \'Arial\', \'sans-serif\''
+
+    
 
     ctx.fillText(text, (CANVASWIDTH - ctx.measureText(text).width) * 0.5, CANVASHEIGHT * 0.5)
 
@@ -80,8 +88,23 @@
         music.play()
       }
     })
+
+    document.addEventListener('touchstart', function() {
+      var music = document.getElementById('music')
+      if (music.paused) {
+        music.play()
+      }
+    })
        
 }
+  function IsPhone() {
+    //获取浏览器navigator对象的userAgent属性（浏览器用于HTTP请求的用户代理头的值）
+    var info = navigator.userAgent;
+    //通过正则表达式的test方法判断是否包含“Mobile”字符串
+    var isPhone = /mobile/i.test(info);
+    //如果包含“Mobile”（是手机设备）则返回true
+    return isPhone;
+  }
 
 //setInterval("toggleSound()",1000);
 
@@ -254,10 +277,10 @@
     }
   }
   
-  var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-    if(!isChrome){
-      $('#iframeAudio').remove()
-  }
+  // var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+  //   if(!isChrome){
+  //     $('#iframeAudio').remove()
+  // }
   
   // setTimeout(() => {
     init()  
