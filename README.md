@@ -6,6 +6,8 @@
 
 ![image-20220803225133833](https://raw.githubusercontent.com/DengSchoo/GayHubImgBed/main/image-20220803225133833.png)
 
+![6xlgq-8l548](https://raw.githubusercontent.com/DengSchoo/GayHubImgBed/main/6xlgq-8l548.gif)
+
 **2、改进点：**
 
 - 调整字体风格和大小
